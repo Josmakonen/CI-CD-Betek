@@ -5,7 +5,7 @@ region = "us-east-1"
 terraform {
 
 backend "s3" {
-bucket = "s3-bucket-josemanuel " # Debes crearlo manualmente una vez
+bucket = "s3-bucket-josemanuel" # Debes crearlo manualmente una vez
 key = "github-actions-demo-josemanuel/terraform.tfstate" # Ruta dentro del bucket
 region= "us-east-1"
 encrypt = true
