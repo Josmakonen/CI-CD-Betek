@@ -4,17 +4,15 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    # Este bucket debe existir previamente en tu consola de AWS
-    bucket  = "s3-bucket-josemanuel" 
+    bucket  = "s3-bucket-josemanuel"
     key     = "github-actions-demo-josemanuel/terraform.tfstate"
     region  = "us-east-1"
     encrypt = true
   }
 }
 
-# Cambiamos el nombre del bucket de la aplicación para evitar conflictos
 resource "aws_s3_bucket" "web" {
-  bucket = "mi-app-web-josemanuel" # Un nombre único para tu sitio
+  bucket = "mi-app-web-josemanuelcruz"
 }
 
 resource "aws_s3_bucket_website_configuration" "web_config" {
@@ -43,7 +41,6 @@ resource "aws_s3_bucket_policy" "public_read" {
       Effect    = "Allow",
       Principal = "*",
       Action    = "s3:GetObject",
-      # Usamos la referencia dinámica para evitar errores manuales
       Resource  = "${aws_s3_bucket.web.arn}/*"
     }]
   })
